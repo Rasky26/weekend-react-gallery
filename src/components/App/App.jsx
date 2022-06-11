@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from "axios";
 
 // Import the components used on the App.jsx level
-import { GalleryListComponent } from '../Gallery/GalleryList'
+import GalleryListComponent from '../Gallery/GalleryList'
 
 // Import the stylesheets
 import './App.css';
@@ -55,7 +55,9 @@ function App() {
           <h1 className="App-title">Gallery of My Life</h1>
         </header>
         <p>Gallery goes here</p>
-        <img src="images/goat_small.jpg"/>
+        <GalleryListComponent
+          galleryArray = {galleryArray}
+        />
       </div>
     );
 }
