@@ -101,5 +101,8 @@ button:focus {
 }
 
 .photo-likes--none {
-  color: var(--clr-medium)
+  margin-top: 8px;
+  color: var(--clr-medium);
+  font-size: 80%;
+  font-weight: var(--fw-light);
 }
