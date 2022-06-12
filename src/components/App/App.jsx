@@ -49,15 +49,32 @@ function App() {
   }
 
 
+  // Update photo `love it! count route
+  const addLoveToPhoto = (photoId) => {
+    axios.put(`/gallery/like/${photoId}`)
+    .then(() => getAllPhotos())
+    .catch((err) => {
+      console.log(`
+        Error occurred in App.jsx PUT method
+
+        ${err}
+      `)
+    })
+  }
+
+
     return (
       <div className="App">
+        
         <header className="App-header">
           <h1 className="App-title">Gallery of My Life</h1>
         </header>
-        <p>Gallery goes here</p>
+
         <GalleryListComponent
-          galleryArray = {galleryArray}
+          galleryArray={galleryArray}
+          addLoveToPhoto={addLoveToPhoto}
         />
+
       </div>
     );
 }
