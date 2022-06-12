@@ -1,15 +1,112 @@
+:root {
+  /* Set the color scheme */
+  --clr-background: hsl(0, 0%, 13%);
+  --clr-medium: hsl(0, 0%, 42%);
+  --clr-light: hsl(0, 0%, 86%);
+  --clr-extra-light: hsl(0, 0%, 98%);
+  --clr-font-light: hsl(0, 0%, 100%);
+
+  /* Control the image gallery sizings */
+  --card-size-width: 300px;
+  --img-max-size: 226px;
+
+  /* Set the font weights */
+  --fw-light: 300;
+  --fw-normal: 400;
+  --fw-bold: 900;
+}
+
+* {
+  font-family: 'Merriweather', Arial, Helvetica, sans-serif;
+}
+
 .App {
+  margin: 0 auto;
   text-align: center;
 }
 
 .App-header {
-  background-color: #222;
+  background-color: var(--clr-background);
   padding: 1em;
-  color: white;
+  color: var(--clr-font-light);
   margin-bottom: 1em;
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 2.5em;
+  font-weight: var(--fw-bold);
 }
 
+h2 {
+  font-size: 2em;
+}
+
+.image-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem;
+  justify-content: center;
+}
+
+.card {
+  margin: 1rem;
+  border: 2px solid var(--clr-light);
+  border-radius: 16px;
+  padding: 26px;
+  padding-bottom: 1em;
+  width: var(--card-size-width);
+  box-shadow: inset 0 0 8px var(--clr-background),
+              0 0 5px var(--clr-light);
+  transition: 0.26s ease-in-out;
+}
+
+.card:hover,
+.card:focus {
+  box-shadow: inset 0 0 16px var(--clr-background),
+              0 0 10px var(--clr-light);
+}
+
+.card-image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background-color: var(--clr-extra-light);
+  margin-bottom: 1.2em;
+  height: calc(var(--img-max-size) + 16px);
+}
+
+button {
+  border: none;
+  border-radius: 6px;
+  font-size: 112.5%;
+  transition: 0.26s linear;
+}
+
+button:hover,
+button:focus {
+  box-shadow: 0 0 0;
+}
+
+.photo-likes {
+  padding: 8px 0;
+  transition: 0.26s ease-in-out;
+}
+
+.card:hover .photo-likes,
+.card:focus .photo-likes {
+  transform: translateY(-4px);
+}
+
+.photo-likes-number {
+  font-size: 125%;
+  font-weight: var(--fw-bold);
+}
+
+.photo-likes--none {
+  margin-top: 8px;
+  color: var(--clr-medium);
+  font-size: 80%;
+  font-weight: var(--fw-light);
+}
