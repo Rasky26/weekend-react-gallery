@@ -1,5 +1,11 @@
 /* Controls ONLY the image size of pictures in our galler */
 /* All images not referenced by this specific module will not be impacted */
+
+:root {
+    /* Gallery specific colors */
+    --clr-description-background: hsla(0, 0%, 35%, 86%);
+}
+
 .gallery__img {
     max-width: var(--img-max-size);
     max-height: var(--img-max-size);
@@ -21,4 +27,16 @@
 
 .gallery__button:active {
     background-color: var(--clr-medium);
+}
+
+.photo_description_container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(var(--img-max-size) * 0.75);
+    background-color: var(--clr-description-background);
+    color: var(--clr-light);
+    font-weight: var(--fw-light);
+    font-size: 115%;
 }
