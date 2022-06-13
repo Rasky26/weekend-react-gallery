@@ -6,7 +6,7 @@ import GalleryItemDescriptionComponent from "./GalleryItemDescription"
 
 // Import the CSS module file
 // REF: https://create-react-app.dev/docs/adding-a-css-modules-stylesheet/
-import styles from "./Gallery.module.css"
+import styles from "../Gallery.module.css"
 
 // Function that handles rending a specific
 // image-related object `galleryObj` to the DOM

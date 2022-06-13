@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import axios from "axios";
 
 // Import the components used on the App.jsx level
-import GalleryListComponent from '../Gallery/GalleryList'
+import GalleryFormComponent from '../Gallery/Content/GalleryForm';
+import GalleryListComponent from '../Gallery/Content/GalleryList'
 
 // Import the stylesheets
 import './App.css';
@@ -63,12 +64,31 @@ function App() {
   }
 
 
+  // Update photo `love it! count route
+  const postNewPhoto = (photoObj) => {
+    console.log(photoObj, "here")
+    axios.post("/gallery", photoObj)
+    .then(() => getAllPhotos())
+    .catch((err) => {
+      console.log(`
+        Error occurred in App.jsx POST method
+
+        ${err}
+      `)
+    })
+  }
+
+
     return (
       <div className="App">
         
         <header className="App-header">
           <h1 className="App-title">Gallery of My Life</h1>
         </header>
+
+        <GalleryFormComponent
+          postNewPhoto={postNewPhoto}
+        />
 
         <GalleryListComponent
           galleryArray={galleryArray}

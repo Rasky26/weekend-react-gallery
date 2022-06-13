@@ -1,5 +1,5 @@
 // Import the CSS module file
-import styles from "./Gallery.module.css"
+import styles from "../Gallery.module.css"
 
 // Function that handles the display of a photo's description
 function GalleryItemDescriptionComponent({ description }) {
