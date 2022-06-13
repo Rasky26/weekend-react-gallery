@@ -2,22 +2,10 @@ const express = require('express');
 const router = express.Router();
 const galleryItems = require('../modules/gallery.data');
 const pool = require("../modules/pool")
-const fs = require('fs')
+const fs = require('fs');
+const { response } = require('express');
 
 // DO NOT MODIFY THIS FILE FOR BASE MODE
-
-// PUT Route
-// router.put('/like/:id', (req, res) => {
-//     console.log("In router: gallery -> PUT", req.params);
-//     const galleryId = req.params.id;
-//     for(const galleryItem of galleryItems) {
-//         if(galleryItem.id == galleryId) {
-//             galleryItem.likes += 1;
-//         }
-//     }
-//     res.sendStatus(200);
-// }); // END PUT Route
-
 
 
 // POST Route
@@ -40,12 +28,14 @@ router.post("/", (req, res) => {
       })
 })
 
+
 // GET Route
 router.get("/", (req, res) => {
 
     // Set the SQL Query
     const sqlQuery = `
         SELECT * FROM "image_gallery"
+        ORDER BY "id" ASC
     `
 
     // Get the array from the database
@@ -70,42 +60,25 @@ router.get("/", (req, res) => {
 // PUT Route
 router.put('/like/:id', (req, res) => {
 
-    // Set the SQL Query
+    // Update the `likes` count on the DB side
     const sqlQuery = `
-        SELECT "likes" FROM "image_gallery"
-        WHERE "id" = ($1)
+        UPDATE "image_gallery"
+        SET "likes" = "likes" + 1
+        WHERE "id" = $1
     `
+    // Set the `param` as an integer
     const sqlParams = [
         parseInt(req.params.id),
     ]
 
-    let currentLikeValue
-
     // Update the like count directly on the database level.
     // Minimizes risk of erroneous get data being sent and processed.
     pool.query(sqlQuery, sqlParams)
-    .then(response => {
-        console.log("resps", response)
-        currentLikeValue = response
-        // res.send(response.rows)
-    })
-    .catch((error) => {
-      console.log(`Error making database query ${sqlQuery} --> ${error}`);
-      res.sendStatus(500);
-    })
-
-    const sqlQueryReturn = `
-        UPDATE "image_gallery"
-        SET "likes" = $2
-        WHERE "id" = $1
-    `
-    const sqlParamsReturn = [
-        parseInt(req.params.id),
-        currentLikeValue++,
-    ]
-
-    pool.query(sqlQueryReturn, sqlParamsReturn)
-    .then(response => res.send(201))
+    // .then(response => {
+    //     currentLikeValue = response.rows[0].likes
+    //     console.log("HERE!", currentLikeValue, response.rows[0].likes)
+    // })
+    .then(() => res.send(201))
     .catch((error) => {
       console.log(`Error making database query ${sqlQuery} --> ${error}`);
       res.sendStatus(500);
