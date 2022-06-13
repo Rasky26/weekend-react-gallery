@@ -74,10 +74,6 @@ router.put('/like/:id', (req, res) => {
     // Update the like count directly on the database level.
     // Minimizes risk of erroneous get data being sent and processed.
     pool.query(sqlQuery, sqlParams)
-    // .then(response => {
-    //     currentLikeValue = response.rows[0].likes
-    //     console.log("HERE!", currentLikeValue, response.rows[0].likes)
-    // })
     .then(() => res.send(201))
     .catch((error) => {
       console.log(`Error making database query ${sqlQuery} --> ${error}`);

@@ -15,4 +15,5 @@ VALUES
     ('images/squirrel-braces-mostly-braces.png', 'Updated photo of braces progress.'),
     ('images/cat-braces.png', 'Cat with braces, first photo after just getting braces put in.');
 
-SELECT * FROM "image_gallery";
+SELECT * FROM "image_gallery"
+ORDER BY "id" ASC;
