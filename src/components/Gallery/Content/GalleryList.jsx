@@ -1,5 +1,5 @@
 // Import the `GalleryItem` component
-import GalleryItemComponent from './GalleryItem'
+import GalleryItemComponent from '../Components/GalleryItem'
 
 // Component that controls the handling of the image
 // gallery array and sends each image to a sub-component

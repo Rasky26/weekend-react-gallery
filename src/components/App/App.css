@@ -41,6 +41,71 @@ h2 {
   font-size: 2em;
 }
 
+.form-container {
+  margin: 0 auto;
+  padding: 1.26em;
+  width: 60%;
+  min-width: var(--card-size-width);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--clr-light);
+  border-radius: 16px;
+}
+
+input,
+textarea {
+  margin-bottom: 24px;
+  padding: 12px 24px 2px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--clr-medium);
+  border-bottom-width: 1px;
+  transition: 0.26s ease-in-out;
+}
+
+textarea {
+  line-height: 1.86;
+  resize: none;
+}
+
+input:hover,
+textarea:hover {
+  background-color: var(--clr-light);
+}
+
+input:focus,
+textarea:focus {
+  padding-bottom: 6px;
+  background-color: var(--clr-extra-light);
+  border-bottom-color: var(--clr-background);
+  border-bottom-width: 2px;
+}
+
+button {
+  border: none;
+  border-radius: 6px;
+  font-size: 112.5%;
+  padding: 8px 0;
+  background-color: var(--clr-background);
+  color: var(--clr-font-light);
+  font-weight: bold;
+  transition: 0.26s ease-in-out;
+}
+
+button:hover,
+button:focus {
+    box-shadow: inset 0 0 8px var(--clr-light),
+                0 0 12px var(--clr-medium);
+    color: var(--clr-light);
+}
+
+button:active {
+    background-color: var(--clr-medium);
+}
+
 .image-gallery {
   display: flex;
   flex-wrap: wrap;
@@ -75,18 +140,6 @@ h2 {
   background-color: var(--clr-extra-light);
   margin-bottom: 1.2em;
   height: calc(var(--img-max-size) + 16px);
-}
-
-button {
-  border: none;
-  border-radius: 6px;
-  font-size: 112.5%;
-  transition: 0.26s linear;
-}
-
-button:hover,
-button:focus {
-  box-shadow: 0 0 0;
 }
 
 .photo-likes {
